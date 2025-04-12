@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="card header-card">
+    <div>
+      <h2>Student Dashboard</h2>
+      <p><strong>Name:</strong> John Doe &nbsp;|&nbsp; <strong>Roll No:</strong> 23CS045</p>
+      <p><strong>Department:</strong> Computer Science &nbsp;|&nbsp; <strong>Semester:</strong> 4th</p>
+    </div>
+    <div class="student-photo">JD</div>
+  </div>
+
+  <h3>Subjects & Attendance</h3>
+  <div class="grid" id="subjects-container">
+    <!-- Subject cards will be displayed here -->
+  </div>
+
+  <button class="add-subject-btn" onclick="openAddSubjectModal()">
+    <span>+</span> Add New Subject
+  </button>
+
+  <div class="card controls-card">
+    <h3>Daily Check-in</h3>
+    <p>Mark your attendance for today's classes</p>
+    <button onclick="markAttendance()">Mark Attendance</button>
+    <p class="message" id="status-message"></p>
+
+    <div id="issue-form" style="display:none; margin-top: 20px;">
+      <h4>Report an Issue</h4>
+      <textarea id="issue-text" rows="4" placeholder="Explain your issue..."></textarea><br>
+      <div>
+        <button onclick="submitReport()">Submit Report</button>
+        <button class="secondary-btn" onclick="cancelReport()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for attendance details -->
+  <div class="modal-overlay" id="attendanceModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalSubjectTitle">Subject Attendance</h3>
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="stats-container">
+        <div class="stat-box">
+          <div class="stat-value" id="totalClasses">0</div>
+          <div class="stat-label">Total Classes</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="attendedClasses">0</div>
+          <div class="stat-label">Classes Attended</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="percentageDisplay">0%</div>
+          <div class="stat-label">Attendance</div>
+        </div>
+      </div>
+      <div class="attendance-details" id="attendanceDetails">
+        <!-- Attendance records will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Subject Modal -->
+  <div class="modal-overlay" id="addSubjectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Subject</h3>
+        <button class="close-modal" onclick="closeAddSubjectModal()">&times;</button>
+      </div>
+      <form id="add-subject-form">
+        <div class="form-group">
+          <label for="subject-name">Subject Name</label>
+          <input type="text" class="form-control" id="subject-name" placeholder="Enter subject name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="class-time">Class Timing</label>
+          <input type="text" class="form-control" id="class-time" placeholder="e.g. 9:00 AM - 10:30 AM" required>
+        </div>
+
+        <div class="form-group">
+          <label for="classroom">Classroom No.</label>
+          <input type="text" class="form-control" id="classroom" placeholder="e.g. B-201" required>
+        </div>
+
+        <div class="form-group">
+          <label for="class-days">Days of Class</label>
+          <input type="text" class="form-control" id="class-days" placeholder="e.g. Mon, Wed, Fri" required>
+        </div>
+
+        <div class="form-group">
+          <label for="professor-name">Professor Name</label>
+          <input type="text" class="form-control" id="professor-name" placeholder="Enter professor's name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="credits">Number of Credits</label>
+          <input type="number" class="form-control" id="credits" min="1" placeholder="e.g. 3" required>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <button type="submit" class="btn" id="save-subject-btn">Save Subject</button>
+          <button type="button" class="secondary-btn" onclick="closeAddSubjectModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 RV College Management System</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
